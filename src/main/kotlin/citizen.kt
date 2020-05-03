@@ -48,5 +48,7 @@ fun main() {
         Citizen.random(),
         Citizen.random(),
     )
+
+    println(citizens.size)
 }
 
