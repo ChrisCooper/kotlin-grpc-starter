@@ -1,3 +1,8 @@
+import io.grpc.ServerBuilder
+import io.grpc.stub.StreamObserver
+import primtech.CitizenOuterClass
+import primtech.CitizenServiceGrpc
+import java.net.URL
 import java.util.*
 
 val global_random = Random()
@@ -42,13 +47,26 @@ class Citizen {
     var age = 0
 }
 
-fun main() {
-    val citizens = mutableListOf(
-        Citizen.random(),
-        Citizen.random(),
-        Citizen.random(),
-    )
+//fun main() {
+//    val citizens = mutableListOf(
+//        Citizen.random(),
+//        Citizen.random(),
+//        Citizen.random(),
+//    )
+//
+//    println(citizens.size)
+//}
 
-    println(citizens.size)
+
+class CitizenService: CitizenServiceGrpc.CitizenServiceImplBase() {
+    override fun getCitizen(
+        request: CitizenOuterClass.Void,
+        responseObserver: StreamObserver<CitizenOuterClass.Citizen>
+    ) {
+        val citizen: CitizenOuterClass.Citizen = CitizenOuterClass.Citizen.newBuilder().setName("Bob").build()
+        responseObserver.onNext(citizen)
+        responseObserver.onCompleted()
+    }
 }
+
 
