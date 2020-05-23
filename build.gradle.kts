@@ -1,4 +1,4 @@
-import com.google.protobuf.gradle.*
+import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
     java
@@ -46,45 +46,12 @@ tasks {
     }
 }
 
-protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
-
-    generateProtoTasks.ofSourceSet("main").forEach{ task ->
-        plugins {
-        }
-        println("TASKKK: ${task}")
-    }
-
-    plugins {
-
-    }
-
-//    plugins {
-//        generateProtoTasks.ofSourceSet("main").forEach { task ->
-//            println(task)
-//            // grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
-//        }
-//    }
+val generate_grpc by tasks.registering(Exec::class) {
+    commandLine("bin\\protoc.exe", "--plugin=protoc-gen-grpc-java=bin\\protoc-gen-grpc-java.exe", "--java_out=src/main/java", "--grpc-java_out=src/main/java", ".\\src\\main\\proto\\*")
 }
 
-// Inform IDEs like IntelliJ IDEA, Eclipse or NetBeans about the generated code.
-//sourceSets {
-//    main {
-//        java {
-//            srcDirs("build/generated/source/proto/main/grpc")
-//            srcDirs("build/generated/source/proto/main/java")
-//        }
-//    }
-//}
+val compileKotlin by tasks.getting
+val compileJava by tasks.getting
 
-//tasks.clean {
-    //delete(protobuf.generatedFilesBaseDir)
-    //delete(protobuf.)
-//}
-
-
-// Custom task to copy proto-generated java files from build/ to src/
-//tasks.register("syncGeneratedSources", Sync::class){
-//    from("$buildDir/generated/source/proto/main")
-//    into("$rootProject.projectDir/java/src")
-//}
+compileJava.dependsOn(generate_grpc)
+compileKotlin.dependsOn(generate_grpc)
