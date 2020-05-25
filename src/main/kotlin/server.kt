@@ -1,3 +1,4 @@
+import citizen.CitizenService
 import io.grpc.Server
 import io.grpc.ServerBuilder
 import java.util.concurrent.TimeUnit
@@ -16,21 +17,23 @@ class CitizenServer(private val port: Int) {
 
     private val citizenService = CitizenService()
 
-    private val server: Server = ServerBuilder.forPort(port).addService(citizenService).build();
+    private val server: Server = ServerBuilder.forPort(port)
+        .addService(citizenService)
+        .build();
 
     fun start() {
         server.start()
         logger.info("Server started listening on port $port")
 
         Runtime.getRuntime().addShutdownHook(Thread {
-            System.err.println("*** shutting down gRPC server since JVM is shutting down")
+            logger.severe("*** shutting down gRPC server since JVM is shutting down")
 
             try {
                 this@CitizenServer.stop();
             } catch (e: InterruptedException) {
                 e.printStackTrace(System.err);
             }
-            System.err.println("*** server shut down");
+            logger.severe("*** server shut down");
         })
     }
 

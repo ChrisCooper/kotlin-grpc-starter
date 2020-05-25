@@ -433,7 +433,7 @@ public final class CitizenOuterClass {
   }
 
   public interface CitizenOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:primtech.Citizen)
+      // @@protoc_insertion_point(interface_extends:primtech.citizen.Citizen)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -455,14 +455,14 @@ public final class CitizenOuterClass {
         getNameBytes();
   }
   /**
-   * Protobuf type {@code primtech.Citizen}
+   * Protobuf type {@code primtech.citizen.Citizen}
    */
   public static final class Citizen extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:primtech.Citizen)
+      // @@protoc_insertion_point(message_implements:primtech.citizen.Citizen)
       CitizenOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Citizen.newBuilder() to construct.
+    // Use citizen.Citizen.newBuilder() to construct.
     private Citizen(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
@@ -758,11 +758,11 @@ public final class CitizenOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code primtech.Citizen}
+     * Protobuf type {@code primtech.citizen.Citizen}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:primtech.Citizen)
+        // @@protoc_insertion_point(builder_implements:primtech.citizen.Citizen)
         primtech.CitizenOuterClass.CitizenOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
@@ -777,7 +777,7 @@ public final class CitizenOuterClass {
                 primtech.CitizenOuterClass.Citizen.class, primtech.CitizenOuterClass.Citizen.Builder.class);
       }
 
-      // Construct using primtech.CitizenOuterClass.Citizen.newBuilder()
+      // Construct using primtech.CitizenOuterClass.citizen.Citizen.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1030,10 +1030,10 @@ public final class CitizenOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:primtech.Citizen)
+      // @@protoc_insertion_point(builder_scope:primtech.citizen.Citizen)
     }
 
-    // @@protoc_insertion_point(class_scope:primtech.Citizen)
+    // @@protoc_insertion_point(class_scope:primtech.citizen.Citizen)
     private static final primtech.CitizenOuterClass.Citizen DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new primtech.CitizenOuterClass.Citizen();
@@ -1092,7 +1092,7 @@ public final class CitizenOuterClass {
       "\n\034src/main/proto/citizen.proto\022\010primtech" +
       "\"\006\n\004Void\"#\n\007Citizen\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030" +
       "\002 \001(\t2C\n\016CitizenService\0221\n\nGetCitizen\022\016." +
-      "primtech.Void\032\021.primtech.Citizen\"\000b\006prot" +
+      "primtech.Void\032\021.primtech.citizen.Citizen\"\000b\006prot" +
       "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor

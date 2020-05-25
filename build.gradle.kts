@@ -47,7 +47,14 @@ tasks {
 }
 
 val generate_grpc by tasks.registering(Exec::class) {
-    commandLine("bin\\protoc.exe", "--plugin=protoc-gen-grpc-java=bin\\protoc-gen-grpc-java.exe", "--java_out=src/main/java", "--grpc-java_out=src/main/java", ".\\src\\main\\proto\\*")
+    commandLine(
+        "bin\\protoc.exe",
+        "--plugin=protoc-gen-grpc-java=bin\\protoc-gen-grpc-java.exe",
+        "--java_out=src/main/java",
+        "--grpc-java_out=src/main/java",
+        "-I=src/main/proto",
+        ".\\src\\main\\proto\\*"
+    )
 }
 
 val compileKotlin by tasks.getting

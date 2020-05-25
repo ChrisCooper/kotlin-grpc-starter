@@ -1,4 +1,4 @@
-package primtech;
+package primtech.citizen;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
@@ -19,7 +19,7 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.29.0)",
-    comments = "Source: src/main/proto/citizen.proto")
+    comments = "Source: citizen.proto")
 public final class CitizenServiceGrpc {
 
   private CitizenServiceGrpc() {}
@@ -27,29 +27,29 @@ public final class CitizenServiceGrpc {
   public static final String SERVICE_NAME = "primtech.citizen.CitizenService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<primtech.CitizenOuterClass.Void,
-      primtech.CitizenOuterClass.Citizen> getGetCitizenMethod;
+  private static volatile io.grpc.MethodDescriptor<primtech.General.Void,
+      primtech.citizen.CitizenOuterClass.Citizen> getGetCitizenMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetCitizen",
-      requestType = primtech.CitizenOuterClass.Void.class,
-      responseType = primtech.CitizenOuterClass.Citizen.class,
+      requestType = primtech.General.Void.class,
+      responseType = primtech.citizen.CitizenOuterClass.Citizen.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<primtech.CitizenOuterClass.Void,
-      primtech.CitizenOuterClass.Citizen> getGetCitizenMethod() {
-    io.grpc.MethodDescriptor<primtech.CitizenOuterClass.Void, primtech.CitizenOuterClass.Citizen> getGetCitizenMethod;
+  public static io.grpc.MethodDescriptor<primtech.General.Void,
+      primtech.citizen.CitizenOuterClass.Citizen> getGetCitizenMethod() {
+    io.grpc.MethodDescriptor<primtech.General.Void, primtech.citizen.CitizenOuterClass.Citizen> getGetCitizenMethod;
     if ((getGetCitizenMethod = CitizenServiceGrpc.getGetCitizenMethod) == null) {
       synchronized (CitizenServiceGrpc.class) {
         if ((getGetCitizenMethod = CitizenServiceGrpc.getGetCitizenMethod) == null) {
           CitizenServiceGrpc.getGetCitizenMethod = getGetCitizenMethod =
-              io.grpc.MethodDescriptor.<primtech.CitizenOuterClass.Void, primtech.CitizenOuterClass.Citizen>newBuilder()
+              io.grpc.MethodDescriptor.<primtech.General.Void, primtech.citizen.CitizenOuterClass.Citizen>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCitizen"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  primtech.CitizenOuterClass.Void.getDefaultInstance()))
+                  primtech.General.Void.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  primtech.CitizenOuterClass.Citizen.getDefaultInstance()))
+                  primtech.citizen.CitizenOuterClass.Citizen.getDefaultInstance()))
               .setSchemaDescriptor(new CitizenServiceMethodDescriptorSupplier("GetCitizen"))
               .build();
         }
@@ -108,8 +108,8 @@ public final class CitizenServiceGrpc {
 
     /**
      */
-    public void getCitizen(primtech.CitizenOuterClass.Void request,
-        io.grpc.stub.StreamObserver<primtech.CitizenOuterClass.Citizen> responseObserver) {
+    public void getCitizen(primtech.General.Void request,
+        io.grpc.stub.StreamObserver<primtech.citizen.CitizenOuterClass.Citizen> responseObserver) {
       asyncUnimplementedUnaryCall(getGetCitizenMethod(), responseObserver);
     }
 
@@ -119,8 +119,8 @@ public final class CitizenServiceGrpc {
             getGetCitizenMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                primtech.CitizenOuterClass.Void,
-                primtech.CitizenOuterClass.Citizen>(
+                primtech.General.Void,
+                primtech.citizen.CitizenOuterClass.Citizen>(
                   this, METHODID_GET_CITIZEN)))
           .build();
     }
@@ -142,8 +142,8 @@ public final class CitizenServiceGrpc {
 
     /**
      */
-    public void getCitizen(primtech.CitizenOuterClass.Void request,
-        io.grpc.stub.StreamObserver<primtech.CitizenOuterClass.Citizen> responseObserver) {
+    public void getCitizen(primtech.General.Void request,
+        io.grpc.stub.StreamObserver<primtech.citizen.CitizenOuterClass.Citizen> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetCitizenMethod(), getCallOptions()), request, responseObserver);
     }
@@ -165,7 +165,7 @@ public final class CitizenServiceGrpc {
 
     /**
      */
-    public primtech.CitizenOuterClass.Citizen getCitizen(primtech.CitizenOuterClass.Void request) {
+    public primtech.citizen.CitizenOuterClass.Citizen getCitizen(primtech.General.Void request) {
       return blockingUnaryCall(
           getChannel(), getGetCitizenMethod(), getCallOptions(), request);
     }
@@ -187,8 +187,8 @@ public final class CitizenServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<primtech.CitizenOuterClass.Citizen> getCitizen(
-        primtech.CitizenOuterClass.Void request) {
+    public com.google.common.util.concurrent.ListenableFuture<primtech.citizen.CitizenOuterClass.Citizen> getCitizen(
+        primtech.General.Void request) {
       return futureUnaryCall(
           getChannel().newCall(getGetCitizenMethod(), getCallOptions()), request);
     }
@@ -214,8 +214,8 @@ public final class CitizenServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_CITIZEN:
-          serviceImpl.getCitizen((primtech.CitizenOuterClass.Void) request,
-              (io.grpc.stub.StreamObserver<primtech.CitizenOuterClass.Citizen>) responseObserver);
+          serviceImpl.getCitizen((primtech.General.Void) request,
+              (io.grpc.stub.StreamObserver<primtech.citizen.CitizenOuterClass.Citizen>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -239,12 +239,12 @@ public final class CitizenServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return primtech.CitizenOuterClass.getDescriptor();
+      return primtech.citizen.CitizenOuterClass.getDescriptor();
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("citizen.CitizenService");
+      return getFileDescriptor().findServiceByName("CitizenService");
     }
   }
 
