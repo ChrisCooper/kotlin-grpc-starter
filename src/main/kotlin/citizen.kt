@@ -63,7 +63,7 @@ class CitizenService: CitizenServiceGrpc.CitizenServiceImplBase() {
         request: CitizenOuterClass.Void,
         responseObserver: StreamObserver<CitizenOuterClass.Citizen>
     ) {
-        val citizen: CitizenOuterClass.Citizen = CitizenOuterClass.Citizen.newBuilder().setName("Bob").build()
+        val citizen: CitizenOuterClass.Citizen = CitizenOuterClass.Citizen.newBuilder().setId(12).setName("Bob").build()
         responseObserver.onNext(citizen)
         responseObserver.onCompleted()
     }

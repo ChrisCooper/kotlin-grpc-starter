@@ -1,0 +1,13 @@
+version: '3'
+services:
+  envoy:
+    build:
+      context: ./
+      dockerfile: ./envoy-proxy/Dockerfile
+    image: primtech/envoy
+    ports:
+      - "8080:8080"
+    # If you want to run backend services in Docker as well, you can add network/DNS links here
+    # Otherwise refer to the host IP with the host.docker.internal hostname
+    # links:
+    #   - backend-server
