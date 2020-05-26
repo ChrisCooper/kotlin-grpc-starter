@@ -13,18 +13,20 @@ class GameLoop {
     // 1 game-day per second
     val tick_target_runtime = Duration.ofNanos(1_000_000_000 / 24)
 
-    fun main_loop() {
-
+    fun mainLoop() {
         while (true) {
+            synchronized(this) {
+                runSingleGameCycle()
+            }
 
             // Actions may only be taken between game frames
-            synchronized(this) {
-                tick
+            if (isPaused) {
+                Thread.sleep(100);
             }
         }
     }
 
-    fun tick() {
+    fun runSingleGameCycle() {
         val frame_start_time = Instant.now()
 
         Citizen.updateCitizens()

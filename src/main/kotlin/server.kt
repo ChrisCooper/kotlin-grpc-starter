@@ -1,24 +1,20 @@
 import citizen.CitizenService
+import game.GameService
 import io.grpc.Server
 import io.grpc.ServerBuilder
 import java.util.concurrent.TimeUnit
 import java.util.logging.Logger
 
-fun main() {
-    println("Starting CitizenServer")
-
-    val server: CitizenServer = CitizenServer(8980)
-    server.start();
-    server.blockUntilShutdown();
-}
-
-class CitizenServer(private val port: Int) {
-    private val logger = Logger.getLogger(CitizenServer::class.java.name)
-
-    private val citizenService = CitizenService()
+class PrimTechServer(
+    private val port: Int,
+    private val citizenService: CitizenService,
+    private val gameService: GameService,
+) {
+    private val logger = Logger.getLogger(PrimTechServer::class.java.name)
 
     private val server: Server = ServerBuilder.forPort(port)
         .addService(citizenService)
+        .addService(gameService)
         .build();
 
     fun start() {
@@ -29,7 +25,7 @@ class CitizenServer(private val port: Int) {
             logger.severe("*** shutting down gRPC server since JVM is shutting down")
 
             try {
-                this@CitizenServer.stop();
+                this@PrimTechServer.stop();
             } catch (e: InterruptedException) {
                 e.printStackTrace(System.err);
             }
