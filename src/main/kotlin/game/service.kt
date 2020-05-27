@@ -8,21 +8,13 @@ import java.util.concurrent.BlockingQueue
 import java.util.concurrent.LinkedBlockingDeque
 
 
-class GameService: GameServiceGrpc.GameServiceImplBase() {
-
-    val frameQueue: BlockingQueue<Game.FrameInfo> = LinkedBlockingDeque()
+class GameService(private val frameQueue: BlockingQueue<Game.FrameInfo>): GameServiceGrpc.GameServiceImplBase() {
 
     override fun streamFrames(request: General.Void, responseObserver: StreamObserver<Game.FrameInfo>) {
 
         while (true) {
-            val frameInfo = Game.FrameInfo.newBuilder()
-                .setFrameNumber(0)
-                .setActualFrameTimeNanos(0)
-                .setTargetFrameTimeNanos(0)
-                .build()
-
-            responseObserver.onNext(frameInfo)
-            Thread.sleep(1000);
+            val recentFrame = frameQueue.take()
+            responseObserver.onNext(recentFrame)
         }
 
         // responseObserver.onCompleted()

@@ -11,7 +11,7 @@ class Citizen {
             citizens.forEach{ c-> c.update()}
 
             val starvedCitizens = citizens.filter { c -> c.nutrition < 0 }
-            println("${starvedCitizens.size} citizens have starved")
+            //println("${starvedCitizens.size} citizens have starved")
             citizens.removeAll(starvedCitizens)
         }
 
